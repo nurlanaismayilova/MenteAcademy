@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using WebApplication11.DAL;
 var builder = WebApplication.CreateBuilder(args);
 
