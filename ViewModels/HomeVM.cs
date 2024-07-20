@@ -6,5 +6,7 @@ namespace sitee.ViewModels
     {
         public List<Team> Teams { get; set; }
         public List<Service> Services { get; set; }
+        public List<Profession> Professions { get; set; }
+
     }
 }

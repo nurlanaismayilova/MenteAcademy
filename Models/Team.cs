@@ -1,4 +1,6 @@
-﻿namespace sitee.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace sitee.Models
 {
     public class Team
     {
@@ -6,5 +8,8 @@
         public string Name { get; set; }
         public Profession? Profession { get; set; }
         public int ProfessionId { get; set; }
+/*        [NotMapped]
+        public IFormFile? formFile { get; set; }
+        public string? Image { get; set; }*/
     }
 }

@@ -20,7 +20,8 @@ namespace sitee.Controllers
             HomeVM vm = new HomeVM()
             {
                 Teams = await _appDbContext.Teams.Include(x => x.Profession).Take(4).ToListAsync(),
-                Services = await _appDbContext.Services.Take(6).ToListAsync()
+                Services = await _appDbContext.Services.Take(6).ToListAsync(),
+                Professions = await _appDbContext.Professions.Take(6).ToListAsync()
             };
 
             return View(vm);

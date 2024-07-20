@@ -10,6 +10,15 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
+/*app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Profession}/{action=Index}/{id?}"
+    );
+});
+*/
+
 app.MapControllerRoute(
     name: "default", 
     pattern: "{controller=Home}/{action=index}/{ id?}"
