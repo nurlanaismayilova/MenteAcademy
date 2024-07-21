@@ -11,7 +11,7 @@ using WebApplication11.DAL;
 namespace sitee.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240720142711_new")]
+    [Migration("20240721203406_new")]
     partial class @new
     {
         /// <inheritdoc />
@@ -50,9 +50,11 @@ namespace sitee.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");

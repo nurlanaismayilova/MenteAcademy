@@ -2,23 +2,23 @@
 using Microsoft.EntityFrameworkCore;
 using sitee.Models;
 using WebApplication11.DAL;
-using sitee.Models;
 
 namespace WebApplication11.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ProfessionController : Controller
+
+    public class ServiceController : Controller
     {
         private readonly AppDbContext _context;
 
-        public ProfessionController(AppDbContext context)
+        public ServiceController(AppDbContext context)
         {
             _context = context;
         }
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Professions.ToListAsync());
+            return View(await _context.Services.ToListAsync());
         }
 
         [HttpGet] // for visualization
@@ -28,11 +28,11 @@ namespace WebApplication11.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Profession profession)
+        public async Task<IActionResult> Create(Service service)
         {
             //if (!ModelState.IsValid) { return View(); }
-            if (profession == null) { return View(); }
-            await _context.Professions.AddAsync(profession);
+            if (service == null) { return View(); }
+            await _context.Services.AddAsync(service);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");// nameof(Index)
         }
@@ -40,18 +40,19 @@ namespace WebApplication11.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            Profession? profession = await _context.Professions.FirstOrDefaultAsync(p => p.Id == id);
-            if (profession == null) { return View(); }
-            return View(profession);
+            Service? service = await _context.Services.FirstOrDefaultAsync(p => p.Id == id);
+            if (service == null) { return View(); }
+            return View(service);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Edit(Profession profession)
+        public async Task<IActionResult> Edit(Service service)
         {
-            Profession? exists = await _context.Professions.FirstOrDefaultAsync(p => p.Id == profession.Id);
-            if (profession == null) { return View(); }
+            Service? exists = await _context.Services.FirstOrDefaultAsync(p => p.Id == service.Id);
+            if (service == null) { return View(); }
             if (exists == null) { return View(); }
-            exists.Name = profession.Name;
+            exists.Name = service.Name;
+            exists.Description = service.Description;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
@@ -59,9 +60,9 @@ namespace WebApplication11.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            Profession? profession = await _context.Professions.FirstOrDefaultAsync(p => p.Id == id);
-            if (profession == null) { return View(); }
-            _context.Remove(profession);
+            Service? service = await _context.Services.FirstOrDefaultAsync(p => p.Id == id);
+            if (service == null) { return View(); }
+            _context.Remove(service);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
 

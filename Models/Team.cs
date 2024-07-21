@@ -6,10 +6,10 @@ namespace sitee.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Profession? Profession { get; set; }
         public int ProfessionId { get; set; }
-/*        [NotMapped]
-        public IFormFile? formFile { get; set; }
-        public string? Image { get; set; }*/
+        public string? Image { get; set; }
+        [NotMapped]
+        public IFormFile? ImageFile { get; set; }
+        public Profession? Profession { get; set; }
     }
 }

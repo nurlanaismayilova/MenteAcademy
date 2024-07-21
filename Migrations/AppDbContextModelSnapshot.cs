@@ -35,7 +35,7 @@ namespace sitee.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Professions", (string)null);
+                    b.ToTable("Professions");
                 });
 
             modelBuilder.Entity("sitee.Models.Service", b =>
@@ -47,14 +47,16 @@ namespace sitee.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Description")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Services", (string)null);
+                    b.ToTable("Services");
                 });
 
             modelBuilder.Entity("sitee.Models.Team", b =>
@@ -79,7 +81,7 @@ namespace sitee.Migrations
 
                     b.HasIndex("ProfessionId");
 
-                    b.ToTable("Teams", (string)null);
+                    b.ToTable("Teams");
                 });
 
             modelBuilder.Entity("sitee.Models.Team", b =>
