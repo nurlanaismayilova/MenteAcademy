@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="~/admin/vendors/datatables.net-bs4/dataTables.bootstrap4.css">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
-    <link rel="stylesheet" href="~/admin/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="~/admin/images/favicon.png" />
 </head>
@@ -235,8 +235,10 @@
                     </li>
                 </ul>
             </nav>
+            <!-- partial -->
         @RenderBody()
-    </div>
+        </div>
+        <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
@@ -261,3 +263,4 @@
 </body>
 
 </html>
+
