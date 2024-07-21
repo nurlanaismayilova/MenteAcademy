@@ -2,7 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using sitee.Models;
 using WebApplication11.DAL;
-using sitee.Models;
 
 namespace WebApplication11.Areas.Admin.Controllers
 {
@@ -30,7 +29,7 @@ namespace WebApplication11.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Profession profession)
         {
-            //if (!ModelState.IsValid) { return View(); }
+            if (!ModelState.IsValid) { return View(); }
             if (profession == null) { return View(); }
             await _context.Professions.AddAsync(profession);
             await _context.SaveChangesAsync();
