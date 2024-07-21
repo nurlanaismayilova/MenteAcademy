@@ -10,14 +10,28 @@ var app = builder.Build();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
-/*app.UseEndpoints(endpoints =>
+void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 {
-    endpoints.MapControllerRoute(
-      name: "areas",
-      pattern: "{area:exists}/{controller=Profession}/{action=Index}/{id?}"
-    );
-});
-*/
+    if (env.IsDevelopment())
+    {
+        app.UseDeveloperExceptionPage();
+    }
+    else
+    {
+        // Add production error handling middleware here.
+    }
+
+    app.UseRouting(); // This should be added before UseEndpoints
+
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllerRoute(
+            name: "areas",
+            pattern: "{area}/{controller=Profession}/{action=index}/{id?}"
+        );
+    });
+}
+
 
 app.MapControllerRoute(
     name: "default", 
