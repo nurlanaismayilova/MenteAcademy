@@ -7,30 +7,17 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<AppDbContext>(x => x.UseSqlServer(builder.Configuration["ConnectionStrings:Default"]));
 
 var app = builder.Build();
-app.UseHttpsRedirection();
+
 app.UseStaticFiles();
+app.UseRouting();
 
-void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+app.UseEndpoints(endpoints =>
 {
-    if (env.IsDevelopment())
-    {
-        app.UseDeveloperExceptionPage();
-    }
-    else
-    {
-        // Add production error handling middleware here.
-    }
-
-    app.UseRouting(); // This should be added before UseEndpoints
-
-    app.UseEndpoints(endpoints =>
-    {
-        endpoints.MapControllerRoute(
-            name: "areas",
-            pattern: "{area}/{controller=Profession}/{action=index}/{id?}"
-        );
-    });
-}
+    endpoints.MapControllerRoute(
+        name: "areas",
+        pattern: "{area}/{controller=Profession}/{action=index}/{id?}"
+    );
+});
 
 
 app.MapControllerRoute(

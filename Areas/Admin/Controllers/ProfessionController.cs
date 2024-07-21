@@ -2,7 +2,7 @@
 
 namespace sitee.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+    [Area("admin")]
     public class ProfessionController : Controller
     {
         public IActionResult Index()
